@@ -36,8 +36,8 @@ jobs:
       - name: Set image names
         run: |
           OWNER=$(echo "${{ github.repository_owner }}" | tr '[:upper:]' '[:lower:]')
-          echo "BACKEND_IMAGE=ghcr.io/${OWNER}/guad-backend" >> $GITHUB_ENV
-          echo "FRONTEND_IMAGE=ghcr.io/${OWNER}/guad-frontend" >> $GITHUB_ENV
+          echo "BACKEND_IMAGE=ghcr.io/${OWNER}/guad-gui-test-backend" >> $GITHUB_ENV
+          echo "FRONTEND_IMAGE=ghcr.io/${OWNER}/guad-gui-test-frontend" >> $GITHUB_ENV
 
       # Step 3: Log in to GitHub Container Registry
       - name: Log in to GitHub Container Registry
@@ -108,8 +108,8 @@ jobs:
       - name: Set image names
         run: |
           OWNER=$(echo "${{ github.repository_owner }}" | tr '[:upper:]' '[:lower:]')
-          echo "BACKEND_IMAGE=ghcr.io/${OWNER}/guad-backend" >> $GITHUB_ENV
-          echo "FRONTEND_IMAGE=ghcr.io/${OWNER}/guad-frontend" >> $GITHUB_ENV
+          echo "BACKEND_IMAGE=ghcr.io/${OWNER}/guad-gui-test-backend" >> $GITHUB_ENV
+          echo "FRONTEND_IMAGE=ghcr.io/${OWNER}/guad-gui-test-frontend" >> $GITHUB_ENV
 
       - name: Deployment Summary
         run: |
