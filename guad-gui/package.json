@@ -15,7 +15,6 @@
     "moment": "^2.30.1",
     "react": "^19.2.5",
     "react-dom": "^19.2.5",
-    "react-progressbar-semicircle": "^1.2.1",
     "react-scripts": "^5.0.1",
     "recharts": "^3.8.1",
     "web-vitals": "^5.2.0"
@@ -46,6 +45,7 @@
   },
   "devDependencies": {
     "@faker-js/faker": "^10.4.0",
+    "@tailwindcss/postcss": "^4.2.2",
     "autoprefixer": "^10.5.0",
     "postcss": "^8.5.10",
     "tailwindcss": "^4.2.2"
