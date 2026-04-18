@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useReducer, useCallback, useRef } from 'react';
-import SemiCircleProgressBar from "react-progressbar-semicircle";
+import { CircularProgressbar } from "react-circular-progressbar";
 import FileWriter from './components/FileWriter';
 import mongoDBService from './services/mongoDBService';
 import logo from './components/white_guad.png'; // Make sure the path is correct
@@ -728,7 +728,7 @@ useEffect(() => {
                       <div className="progress-bars">
                         <div className="progress-bar">
                           <h5 style={{margin: 0}}>Acceleration</h5>
-                          <SemiCircleProgressBar 
+                          <CircularProgressbar 
                             percentage={Math.abs(displayedData.imuData.front.accelerometer.x * 10)}
                             diameter={150} 
                             showPercentValue={false}
