@@ -1,32 +1,24 @@
-# Use official Node.js runtime
 FROM node:18-alpine
 
-# Set working directory
 WORKDIR /app
 
-# Copy package files first (layer caching - only reinstalls when deps change)
 COPY package.json package-lock.json ./
+RUN npm ci --omit=dev
 
-# Install production dependencies only
-RUN npm ci --only=production
+COPY . .
 
-# Copy application code
-COPY server.js ./
+# Install wget for healthcheck
+RUN apk add --no-cache wget
 
-# Expose the port
-EXPOSE 5001
-
-# Set environment
 ENV NODE_ENV=production
 
-# Health check
+EXPOSE 5001
+
+# Create non-root user
+RUN addgroup -S nodejs && adduser -S nodeuser -G nodejs
+USER nodeuser
+
 HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
   CMD wget --quiet --tries=1 --spider http://localhost:5001/api/health || exit 1
 
-# Run as non-root user for security
-RUN addgroup -g 1001 -S nodejs && \
-    adduser -S nodeuser -u 1001
-USER nodeuser
-
-# Start the server
 CMD ["node", "server.js"]
